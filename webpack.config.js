@@ -1,6 +1,8 @@
+const path = require('path');
+
 module.exports = {
     context: __dirname,
-    entry: './frontend/stack_overwhekm.jsx', //modify this
+    entry: './frontend/stack_overwhelm.jsx',
     output: {
         path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
         filename: 'bundle.js'
