@@ -5,19 +5,26 @@ class SessionForm extends React.Component {
         super(props);
         this.state = this.props.formState;
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDemoLogin = this.handleDemoLogin.bind(this);
     }
 
     update(field) {
         return event => this.setState({
             [field]: event.currentTarget.value
         });
-    }
+    };
 
     handleSubmit(event) {
         event.preventDefault();
         const user = Object.assign({}, this.state);
+        user.display_name = user.displayName;
         this.props.processForm(user);
-    }
+    };
+
+    handleDemoLogin(event) {
+        event.preventDefault();
+        this.props.processForm({ email: "cat@mail", password: "password" });
+    };
 
     renderErrors() {
         return (
@@ -33,9 +40,9 @@ class SessionForm extends React.Component {
 
     render() {
         let displayNameContainer;
-        if (this.props.formType === "signup") {
+        if (this.props.formType === "Sign Up") {
             displayNameContainer = (
-                <label><span>Display Name</span>
+                <label className="cred-form-label"><p className="cred">Display name</p>
                     <input
                         value={this.state.displayName}
                         type="text"
@@ -44,28 +51,33 @@ class SessionForm extends React.Component {
                 </label>
             );
         }
+
+        let demoLogin;
+        if (this.props.formType === "Log In") {
+            demoLogin = <button className="demo-login-button" onClick={this.handleDemoLogin}>Log In as Demo User</button>
+        }
         return (
             <>
-                <form onSubmit={this.handleSubmit} className="credentials-form-container">
-                    <div className="credentials-form">
+                <form onSubmit={this.handleSubmit} className="cred-form-container">
+                    <div className={`cred-form ${this.props.formType === 'Sign Up' ? 'signup' : ''}`}>
                         {this.renderErrors()}
                         {displayNameContainer}
-                        <label className="email-container"><span>Email</span>
+                        <label className="cred-form-label"><p className="cred">Email</p>
                             <input
                                 value={this.state.email}
                                 type="text"
                                 onChange={this.update("email")}
                             />
                         </label>
-                        <label className="password-container"><span>Password</span>
+                        <label className="cred-form-label"><p className="cred">Password</p>
                             <input
                                 value={this.state.password}
                                 type="password"
                                 onChange={this.update("password")}
                             />
                         </label>
-                        <input type="Submit" className="credentials-submit-button" value={this.props.formType} />
-                        {/* {demoLogin} */}
+                        <input type="Submit" className="cred-button" value={this.props.formType} readOnly />
+                        {demoLogin}
                     </div>
                 </form>
             </>
