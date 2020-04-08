@@ -6,7 +6,7 @@ class SessionForm extends React.Component {
         this.state = this.props.formState;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDemoLogin = this.handleDemoLogin.bind(this);
-    }
+    };
 
     update(field) {
         return event => this.setState({
@@ -82,7 +82,7 @@ class SessionForm extends React.Component {
                 </form>
             </>
         );
-    } // end of render
-} //end of class
+    }; // end of render
+}; //end of class
 
 export default SessionForm;
