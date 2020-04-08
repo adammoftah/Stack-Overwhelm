@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
 
     def self.find_by_credentials(email, password)
+        debugger
         user = User.find_by(email: email)
         return nil unless user && user.is_password?(password) 
         user
@@ -23,7 +24,7 @@ class User < ApplicationRecord
         self.password_digest = BCrypt::Password.create(password)
     end
 
-    def generate_session_token
+    def self.generate_session_token
         SecureRandom::urlsafe_base64
     end
 

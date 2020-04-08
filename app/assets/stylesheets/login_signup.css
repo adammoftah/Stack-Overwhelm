@@ -1,0 +1,16 @@
+.credentials-form-container {
+    margin: 10% auto 0 auto;
+}
+
+.credentials-form {
+    padding-bottom: 25px;
+    width: 400px;
+    border: solid;
+    display: flex;
+    border-width: thin;
+    border-radius: 4px;
+    border-color: transparent;
+    /* box-shadow: 1px 1px 80px gray;*/
+    align-items: center;
+    flex-direction: column;
+}
