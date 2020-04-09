@@ -1,13 +1,24 @@
+.cred-form-input {
+    width: 100%;
+    border: 1px solid #bbc0c4;
+    box-sizing: border-box;
+    padding: 9.1px;
+    border-radius: 3px;
+}
 
-.cred-form-label {
-    margin: 0 auto;
+.cred {
+    margin: 2px 0;
+    font-weight: 700;
+}
+
+.cred-form-container-login {
+    width: 283px;
 }
 
 .cred-form-container {
     margin: 10% auto 0 auto;
     justify-self: center;
     border-radius: 7px;
-    width: 300px;
     height: 100%;
     box-shadow: 0 10px 25px rgba(0,0,0,0.05), 0 20px 48px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1);
     border-width: thin;
@@ -20,8 +31,15 @@
     display: grid;
     grid-template-columns: 1; 
     grid-template-rows: repeat(5, auto);     
-    grid-gap: 5px;
+    grid-gap: 14px;
     border-radius: 7px;
+    padding: 24px 24px 10px 24px;
+}
+
+#passwordRequirements {
+    font-size: 12px;
+    color: #6a737c;
+    margin: 4px 0;
 }
 /* .cred-form {
     display: flex;
@@ -35,10 +53,8 @@
     align-items: center;
 } */
 
-.signup {
-    /* width: 315px;
-    height: 405px;
-    background-color: brown; */
+.cred-form-container-signup {
+    width: 316px;
 }
 
 
@@ -50,42 +66,28 @@
     margin-bottom: 0;
 }
 
-.cred-form > label > input {
-    border-style: solid;
-    border-color: lightslategrey;
-    border-width: thin;
-    height: 25px;
-    width: 225px;
-    font-size: 15px;
-    padding: 2px 10px;
-    border-radius: 4px;
-}
-
-.cred-button {
-    padding: 15px 75px;
-    margin: 30px;
+.generic-button {
+    padding: 10.4px;
     border-color: transparent;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13.5px;
-    background-color: #0095ff;
     border-radius: 4px;
+    box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.4);
+    border: 1px solid transparent;
+}
+
+.cred-button {
+    background-color: #0095ff;
+
 }
 
 .cred-button:hover {
-    background-color: #0066af;
+    background-color: #0077cc;
 }
 
 .demo-login-button {
-    margin: 15px 30px;
-    background-color: #ffae00;
-    border-radius: 4px;
-    color: white;
-    padding: 15px;
-    font-size: 13.5px;
-    font-family: Arial, Helvetica, sans-serif;
-    border: 0;
-    border-bottom: 10px;
+    background-color: #f48024;
 }
 
 .demo-login-button:hover {

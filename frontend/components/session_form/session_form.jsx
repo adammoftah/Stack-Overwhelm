@@ -27,6 +27,10 @@ class SessionForm extends React.Component {
     };
 
     renderErrors() {
+        if (this.props.errors.length === 0) {
+            return;
+        }
+
         return (
             <ul>
                 {this.props.errors.map((error, idx) => (
@@ -40,43 +44,60 @@ class SessionForm extends React.Component {
 
     render() {
         let displayNameContainer;
+        let passwordRequirements;
         if (this.props.formType === "Sign Up") {
             displayNameContainer = (
-                <label className="cred-form-label"><p className="cred">Display name</p>
+                <div>
+                    <label htmlFor="displayName" className="cred-form-label"><p className="cred">Display name</p></label>
                     <input
+                        id="displayName"
+                        className="cred-form-input"
                         value={this.state.displayName}
                         type="text"
                         onChange={this.update("displayName")}
                     />
-                </label>
+                    {this.renderErrors()}
+                </div>
             );
+
+            passwordRequirements = (
+                <p id="passwordRequirements">Passwords must contain at least eight characters, including at least 1 letter and 1 number.</p>
+            )
         }
 
         let demoLogin;
         if (this.props.formType === "Log In") {
-            demoLogin = <button className="demo-login-button" onClick={this.handleDemoLogin}>Log In as Demo User</button>
+            demoLogin = <button className="generic-button demo-login-button" onClick={this.handleDemoLogin}>Log In as Demo User</button>
         }
         return (
             <>
-                <form onSubmit={this.handleSubmit} className="cred-form-container">
-                    <div className={`cred-form ${this.props.formType === 'Sign Up' ? 'signup' : ''}`}>
-                        {this.renderErrors()}
+                <form onSubmit={this.handleSubmit} className={`cred-form-container ${this.props.formType === 'Sign Up' ? 'cred-form-container-signup' : 'cred-form-container-login'}`}>
+                    <div className={"cred-form"}>
                         {displayNameContainer}
-                        <label className="cred-form-label"><p className="cred">Email</p>
+                        <div>
+                            <label htmlFor="email" className="cred-form-label"><p className="cred">Email</p></label>
                             <input
+                                id="email"
+                                className="cred-form-input"
                                 value={this.state.email}
-                                type="text"
+                                type="email"
                                 onChange={this.update("email")}
                             />
-                        </label>
-                        <label className="cred-form-label"><p className="cred">Password</p>
+                            {this.renderErrors()}
+                        </div>
+                        <div>
+                            <label htmlFor="password" className="cred-form-label"><p className="cred">Password</p></label>
                             <input
+                                id="password"
+                                className="cred-form-input"
                                 value={this.state.password}
                                 type="password"
                                 onChange={this.update("password")}
                             />
-                        </label>
-                        <input type="Submit" className="cred-button" value={this.props.formType} readOnly />
+                            {this.renderErrors()}
+                            {passwordRequirements}
+                        </div>
+                        <input type="Submit" className="generic-button cred-button" value={this.props.formType} readOnly />
                         {demoLogin}
                     </div>
                 </form>
