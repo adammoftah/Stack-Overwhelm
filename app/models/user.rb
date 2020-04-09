@@ -7,6 +7,11 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token
     attr_reader :password
 
+    has_many :questions,
+        primary_key: :id,
+        foreign_key: :author_id,
+        class_name: :Question
+
 
     def self.find_by_credentials(email, password)
         # debugger
