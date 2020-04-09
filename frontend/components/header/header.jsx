@@ -29,7 +29,8 @@ class Header extends React.Component {
             <>
                 <span>Hi, {currentUser.display_name}!</span>
                 <nav className="session-button-nav">
-                    <Link className="session-button session-button-log" to="/signup">Log out</Link>
+                    {/* <Link className="session-button session-button-log" to="/signup">Log out</Link> */}
+                    <button className="session-button session-button-log" onClick={this.props.logout}>Log out</button>
                 </nav>
             </>
         );

@@ -56,7 +56,7 @@ class SessionForm extends React.Component {
                         type="text"
                         onChange={this.update("displayName")}
                     />
-                    {this.renderErrors()}
+                    {/* {this.renderErrors()} */}
                 </div>
             );
 
@@ -83,7 +83,7 @@ class SessionForm extends React.Component {
                                 type="email"
                                 onChange={this.update("email")}
                             />
-                            {this.renderErrors()}
+                            {/* {this.renderErrors()} */}
                         </div>
                         <div>
                             <label htmlFor="password" className="cred-form-label"><p className="cred">Password</p></label>
