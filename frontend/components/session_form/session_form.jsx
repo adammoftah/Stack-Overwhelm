@@ -8,6 +8,13 @@ class SessionForm extends React.Component {
         this.handleDemoLogin = this.handleDemoLogin.bind(this);
     };
 
+    // ////////////////////////////////////////////////
+    // //WHEN THIS IS COMMENTED IN, THINGS BREAK, WHY?
+    // componentWillUnmount() { 
+    //     this.props.clearErrors();
+    // }
+    // ////////////////////////////////////////////////
+
     update(field) {
         return event => this.setState({
             [field]: event.currentTarget.value
@@ -114,6 +121,8 @@ class SessionForm extends React.Component {
             </div>
         );
     }; // end of render
+
+
 }; //end of class
 
 export default SessionForm;

@@ -12,6 +12,9 @@ const sessionErrorsReducer = (oldState = [], action) => {
         case FETCH_CURRENT_USER:
             newState = [];
             return newState;
+        case CLEAR_ERRORS:
+            newState = [];
+            return newState;
         default:
             return oldState;
     }
