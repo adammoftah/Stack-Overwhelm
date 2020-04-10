@@ -1,5 +1,5 @@
 import React from 'react';
-
+import CommunityPoints from './community_points'
 class SessionForm extends React.Component {
     constructor(props) {
         super(props);
@@ -45,6 +45,7 @@ class SessionForm extends React.Component {
     render() {
         let displayNameContainer;
         let passwordRequirements;
+        let communityPoints;
         if (this.props.formType === "Sign Up") {
             displayNameContainer = (
                 <div>
@@ -62,15 +63,24 @@ class SessionForm extends React.Component {
 
             passwordRequirements = (
                 <p id="passwordRequirements">Passwords must contain at least eight characters, including at least 1 letter and 1 number.</p>
-            )
+            );
+
+            communityPoints = (
+                <div className="points">
+                    {<CommunityPoints />}
+                </div>
+            );
         }
 
         let demoLogin;
         if (this.props.formType === "Log In") {
             demoLogin = <button className="generic-button demo-login-button" onClick={this.handleDemoLogin}>Log In as Demo User</button>
         }
+
+
         return (
-            <>
+            <div className="session-page">
+                {communityPoints}
                 <form onSubmit={this.handleSubmit} className={`cred-form-container ${this.props.formType === 'Sign Up' ? 'cred-form-container-signup' : 'cred-form-container-login'}`}>
                     <div className={"cred-form"}>
                         {displayNameContainer}
@@ -101,7 +111,7 @@ class SessionForm extends React.Component {
                         {demoLogin}
                     </div>
                 </form>
-            </>
+            </div>
         );
     }; // end of render
 }; //end of class

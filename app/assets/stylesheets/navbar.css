@@ -57,7 +57,7 @@
     color: #ffffff;
 }
 
-.session-button-signup {
+.session-button-signup:hover {
     background-color: #0077cc;
     color: #ffffff;
 }

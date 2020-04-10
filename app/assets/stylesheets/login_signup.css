@@ -1,3 +1,9 @@
+.session-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .cred-form-input {
     width: 100%;
     border: 1px solid #bbc0c4;
