@@ -39,9 +39,12 @@ class Header extends React.Component {
             <header className="navbar">
                 <div className="navbar-items">
                     <img id="menu-button" src="/images/menu.png"></img>
-                    <Link to="/" className="site-header-link">
-                        StackOverwhelm
+                    <Link to="/" id="site-header-link">
+                        <img id="logo" src="/images/logo.svg" />
                     </Link>
+                    <form id="search-bar-container" action="/search">
+                        <input id="search-bar" type="text" placeholder="Search..."></input>
+                    </form>
                     {currentUser ? greeting() : sessionLinks()}
                 </div>
 

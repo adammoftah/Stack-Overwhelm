@@ -3,13 +3,12 @@
     width: 100%;
     z-index: 42069;
     height: 50px;
-    box-shadow: 0 1px 0 rgba(12,13,14,0.15);
+    box-shadow:rgba(9, 10, 11, 0.1) 0px 1px 1px 0px, rgba(0, 0, 0, 0.024) 0px 0.5px 2px 0px, rgba(0, 0, 0, 0.024) 0px 1px 4px 0px;
 }
 
 .navbar-items {
     background-color: #fafafb;
     border-top: 3px solid #f48024;
-    font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
     box-sizing: border-box;
     align-items: center;
     display: flex;
@@ -22,6 +21,42 @@
 
 #menu-button:hover {
     background-color: #e4e6e8;
+}
+
+#site-header-link {
+    height: 100%;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+}
+
+#site-header-link:hover {
+    background-color: #e4e6e8;
+}
+
+#logo {
+    height: 30px;
+    width: 150px;
+    margin-top: -4px;
+}
+
+#search-bar-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0 12px;
+}
+
+#search-bar {
+    border: 1px solid #bbc0c4;
+    border-radius: 3px;
+    border-color: #bbc0c4;
+    background-color: white;
+    box-shadow: none;
+    color: #3c4146;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 8px 9px 8px 32px;
 }
 
 .session-button-nav {
@@ -52,7 +87,7 @@
     color: #2c5777;
 }
 
-.session-button-signup {
+.session-button-signup, .session-button-signup:visited {
     background-color: #0095ff;
     color: #ffffff;
 }

@@ -6,7 +6,7 @@ class Api::QuestionsController < ApplicationController
         @question.author_id = current_user.id
         
         if @question.save 
-            render :show
+            render "api/questions/show"
         else
             render json: @question.errors.full_messages, status: 422
         end

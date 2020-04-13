@@ -1,5 +1,6 @@
 import React from 'react';
 import CommunityPoints from './community_points'
+import { Link } from 'react-router-dom';
 class SessionForm extends React.Component {
     constructor(props) {
         super(props);
@@ -8,12 +9,9 @@ class SessionForm extends React.Component {
         this.handleDemoLogin = this.handleDemoLogin.bind(this);
     };
 
-    // ////////////////////////////////////////////////
-    // //WHEN THIS IS COMMENTED IN, THINGS BREAK, WHY?
-    // componentWillUnmount() { 
-    //     this.props.clearErrors();
-    // }
-    // ////////////////////////////////////////////////
+    componentDidMount() {
+        this.props.clearErrors();
+    }
 
     update(field) {
         return event => this.setState({
@@ -53,6 +51,9 @@ class SessionForm extends React.Component {
         let displayNameContainer;
         let passwordRequirements;
         let communityPoints;
+        let otherSessionOption;
+        let demoLogin;
+        let logoPreview;
         if (this.props.formType === "Sign Up") {
             displayNameContainer = (
                 <div>
@@ -77,47 +78,76 @@ class SessionForm extends React.Component {
                     {<CommunityPoints />}
                 </div>
             );
+
+            otherSessionOption = (
+                <p>
+                    Already have an account?
+                    &nbsp;<Link to="/login">Log in</Link>
+                </p>
+            );
         }
 
-        let demoLogin;
         if (this.props.formType === "Log In") {
             demoLogin = <button className="generic-button demo-login-button" onClick={this.handleDemoLogin}>Log In as Demo User</button>
+
+            otherSessionOption = (
+                <p>
+                    Don’t have an account?
+                    &nbsp;<Link to="/signup">Sign up</Link>
+                </p>
+            );
+
+            logoPreview = (
+                <div id="logo-link-container">
+                    <Link to="/">
+                        <img id="logo-link" src="/images/logo-sm.svg"></img>
+                    </Link>
+                </div >
+            );
         }
 
 
         return (
             <div className="session-page">
-                {communityPoints}
-                <form onSubmit={this.handleSubmit} className={`cred-form-container ${this.props.formType === 'Sign Up' ? 'cred-form-container-signup' : 'cred-form-container-login'}`}>
-                    <div className={"cred-form"}>
-                        {displayNameContainer}
-                        <div>
-                            <label htmlFor="email" className="cred-form-label"><p className="cred">Email</p></label>
-                            <input
-                                id="email"
-                                className="cred-form-input"
-                                value={this.state.email}
-                                type="email"
-                                onChange={this.update("email")}
-                            />
-                            {/* {this.renderErrors()} */}
+                <div className="session-content">
+                    {communityPoints}
+                    <div className={`${this.props.formType === 'Sign Up' ? 'cred-form-container-signup' : 'cred-form-container-login'}`}>
+                        {logoPreview}
+                        <form onSubmit={this.handleSubmit} className={`cred-form-container`}>
+                            <div className={"cred-form"}>
+                                {displayNameContainer}
+                                <div>
+                                    <label htmlFor="email" className="cred-form-label"><p className="cred">Email</p></label>
+                                    <input
+                                        id="email"
+                                        className="cred-form-input"
+                                        value={this.state.email}
+                                        type="email"
+                                        onChange={this.update("email")}
+                                    />
+                                    {/* {this.renderErrors()} */}
+                                </div>
+                                <div>
+                                    <label htmlFor="password" className="cred-form-label"><p className="cred">Password</p></label>
+                                    <input
+                                        id="password"
+                                        className="cred-form-input"
+                                        value={this.state.password}
+                                        type="password"
+                                        onChange={this.update("password")}
+                                    />
+                                    {this.renderErrors()}
+                                    {passwordRequirements}
+                                </div>
+                                <input type="Submit" className="generic-button cred-button" value={this.props.formType} readOnly />
+                                {demoLogin}
+                            </div>
+                        </form>
+                        <div className="other-session-option">
+                            {otherSessionOption}
                         </div>
-                        <div>
-                            <label htmlFor="password" className="cred-form-label"><p className="cred">Password</p></label>
-                            <input
-                                id="password"
-                                className="cred-form-input"
-                                value={this.state.password}
-                                type="password"
-                                onChange={this.update("password")}
-                            />
-                            {this.renderErrors()}
-                            {passwordRequirements}
-                        </div>
-                        <input type="Submit" className="generic-button cred-button" value={this.props.formType} readOnly />
-                        {demoLogin}
                     </div>
-                </form>
+                </div>
             </div>
         );
     }; // end of render

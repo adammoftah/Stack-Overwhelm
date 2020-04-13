@@ -2,7 +2,7 @@ import * as QuestionAPIUtil from "../util/question_api_util";
 
 export const FETCH_QUESTION_ERRORS = "FETCH_QUESTION_ERRORS";
 export const FETCH_ALL_QUESTIONS = "FETCH_ALL_QUESTIONS";
-export const FETCH_QUESTION = "FETCH_QUESTION";
+export const FETCH_ONE_QUESTION = "FETCH_ONE_QUESTION";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const REMOVE_QUESTION = "REMOVE_QUESTION";
 
@@ -12,8 +12,8 @@ export const fetchAllQuestions = questions => ({
 });
 
 
-export const fetchQuestion = question => ({
-    type: FETCH_NEW_QUESTION,
+export const fetchOneQuestion = question => ({
+    type: FETCH_ONE_QUESTION,
     question
 });
 
@@ -50,20 +50,20 @@ export const fetchQuestion = id => dispatch => (
 
 export const createQuestion = question => dispatch => {
     return QuestionAPIUtil.createQuestion(question).then(
-        (question) => {
-            return dispatch(fetchNewQuestion(question));
+        question => {
+            return dispatch(fetchOneQuestion(question));
         },
-        (errors) => {
+        errors => {
             return dispatch(fetchQuestionErrors(errors.responseJSON));
         });
 };
 
 export const updateQuestion = question => dispatch => {
     return QuestionAPIUtil.updateQuestion(question).then(
-        (question) => {
-            return dispatch(fetchQuestion(question));
+        question => {
+            return dispatch(fetchOneQuestion(question));
         },
-        (errors) => {
+        errors => {
             return dispatch(fetchQuestionErrors(errors.responseJSON));
         });
 };

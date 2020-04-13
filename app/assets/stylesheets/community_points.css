@@ -1,0 +1,36 @@
+.community-image-container {
+    height: 24px;
+}
+
+.community-blurb {
+    width: 420px;
+}
+
+.community-image {
+    height: 26px;
+    width: 26px;
+}
+
+.community-title {
+    font-size: 27px;
+    font-weight: 100;
+}
+
+.community-point-container {
+    display: grid;
+    grid-row-gap: 24px;
+}
+
+.community-point {
+    display: grid;
+    grid-template-columns: 34px auto;
+    align-items: center;
+    height: 24px;
+    font-size: 13px;
+    color: #242729;
+}
+
+.community-subpoint {
+    font-size: 13px;
+    color: #6a737c;
+}
