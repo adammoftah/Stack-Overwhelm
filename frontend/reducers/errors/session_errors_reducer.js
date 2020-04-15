@@ -1,4 +1,4 @@
-import { FETCH_SESSION_ERRORS, FETCH_CURRENT_USER, CLEAR_ERRORS } from "../actions/sessions_actions";
+import { FETCH_SESSION_ERRORS, FETCH_CURRENT_USER, CLEAR_ERRORS } from "../../actions/sessions_actions";
 
 const sessionErrorsReducer = (oldState = [], action) => {
 

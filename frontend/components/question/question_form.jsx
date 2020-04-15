@@ -6,6 +6,7 @@ class QuestionForm extends React.Component {
         super(props);
         this.state = this.props.question;
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.resizeElement = React.createRef();
         // this.renderErrors = this.renderErrors.bind(this);
     }
 
@@ -21,6 +22,36 @@ class QuestionForm extends React.Component {
         event.preventDefault();
         this.props.processQuestionForm(this.state).then(payload => {
             this.props.history.push(`/questions/${payload.question.question.id}`);
+        });
+    }
+
+    componentDidMount() {
+        this.setState({
+            resizing: false,
+            currentBodyHeight: 200
+        });
+
+        this.resizeElement.current.addEventListener('mousedown', (e) => {
+            this.setState({
+                resizing: true,
+                resizingY: e.clientY
+            });
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (this.state.resizing) {
+                const newHeight = this.state.currentBodyHeight - (this.state.resizingY - e.clientY);
+                this.setState({
+                    currentBodyHeight: newHeight,
+                    resizingY: e.clientY
+                });
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            this.setState({
+                resizing: false
+            });
         });
     }
 
@@ -40,22 +71,54 @@ class QuestionForm extends React.Component {
 
     render() {
         return (
-            <div className="question-form-container">
-                <form onSubmit={this.handleSubmit} className="question-form">
-                    <div className="question-form-body">
-                        <span className="question-form-ask-a-question">Ask a Public Question</span>
-                        <label className="title-container"><span className="title">Title</span>
-                            <input type="text" onChange={this.update("title")} placeholder="What is your programming question? Please be specific." value={this.state ? this.state.title : ""} />
-                        </label>
-                        <label className="body-container"><span className="body">Body</span>
-                            <textarea onChange={this.update("body")} value={this.state ? this.state.body : ""}></textarea>
-                        </label>
-                        <div className="question-form-errors-container">
-                            <input type="Submit" className="question-submit-button" defaultValue={this.props.formType} />
-                            {/* {this.renderErrors()} */}
+            <div id="question-form-root">
+                <div id="question-form-ask-a-question">Ask a public question</div>
+                <div id="question-form-container">
+                    <form onSubmit={this.handleSubmit} id="question-form">
+                        <div id="question-form-body">
+                            <label className="question-form-field-container">
+                                Title
+                                <p className="question-form-field-hint">
+                                    Be specific and imagine you’re asking a question to another person
+                                </p>
+                                <input className="question-form-field"
+                                    type="text"
+                                    onChange={this.update("title")}
+                                    placeholder="e.g. Is there an R function for finding the index of an element in a vector?"
+                                    value={this.state ? this.state.title : ""} />
+                            </label>
+
+
+                            <label className="question-form-field-container">
+                                Body
+                                <p className="question-form-field-hint">
+                                    Include all the information someone would need to answer your question
+                                </p>
+                                <textarea className="question-form-field-body"
+                                    onChange={this.update("body")}
+                                    value={this.state ? this.state.body : ""}
+                                    style={{ height: this.state.currentBodyHeight + 'px' }} />
+                                <div id="question-form-field-body-grippie-container" ref={this.resizeElement}>
+                                    <div id="question-form-field-body-grippie" />
+                                </div>
+                            </label>
+
+
+                            {/* 
+                            <label id="question-form-body-container">
+                                <span className="body">Body</span>
+                                <textarea onChange={this.update("body")} value={this.state ? this.state.body : ""}></textarea>
+                            </label> */}
+                            <div id="question-form-errors-container">
+                                <input type="Submit" id="question-submit-button" defaultValue={this.props.formType} />
+                                {/* {this.renderErrors()} */}
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                    <aside id="question-form-aside-container">
+                        Right side
+                    </aside>
+                </div>
             </div>
         );
     }

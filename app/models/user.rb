@@ -8,13 +8,14 @@ class User < ApplicationRecord
     attr_reader :password
 
     has_many :questions,
-        primary_key: :id,
         foreign_key: :author_id,
         class_name: :Question
 
+    has_many :votes, 
+        foreign_key: :voter_id, 
+        dependent: :destroy
 
     def self.find_by_credentials(email, password)
-        # debugger
         user = User.find_by(email: email)
         return nil unless user && user.is_password?(password) 
         user

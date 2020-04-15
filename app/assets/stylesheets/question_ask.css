@@ -1,0 +1,97 @@
+#question-form-root {
+    min-height: calc(100% - 50px);
+}
+
+#question-form-container {
+    padding: 0 24px 24px 24px;
+    display: flex;
+}
+
+#question-form-ask-a-question {
+    font-size: 27px;
+    line-height: 35px;
+    padding: 24px;
+}
+
+#question-form {
+    background-color: white;
+    border: 1px solid #d6d9dc;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.06), 0 3px 8px rgba(0,0,0,0.09);
+    flex: 1 auto;
+    padding: 16px;
+}
+
+.question-form-field-container {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 19.5px;
+    padding: 0 2px;
+}
+
+.question-form-field-hint {
+    color: #3c4146;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15.5px;
+    margin: 2px 0 4px 0;
+    padding: 0 2px;
+}
+
+.question-form-field {
+    border: 1px solid #bbc0c4;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #0c0d0e;
+    font-size: 13px;
+    line-height: 15px;
+    margin: 0 0 18px 0;
+    padding: 8px 9px;
+    width: 100%;
+}
+
+.question-form-field::placeholder {
+    color: #bbc0c4;
+}
+
+.question-form-field-body {
+    border: 1px solid #bbc0c4;
+    box-sizing: border-box;
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    margin: -1px 0 0;
+    padding: 10px;
+    resize: none;
+    tab-size: 4;
+    width: 100%;
+}
+
+#question-form-field-body-grippie-container {
+    align-items: center;
+    background-color: #eff0f1;
+    border: 1px solid #bbc0c4;
+    border-radius: 0px 0px 3px 3px;
+    border-width: 0 1px 1px;
+    cursor: s-resize;
+    display: flex;
+    height: 10px;
+    justify-content: center;
+    margin: -4px 0 0 0;
+    padding: 0;
+}
+
+#question-form-field-body-grippie {
+    background-image: url(/images/resizer.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 5px;
+    width: 100%;
+}
+
+#question-form-aside-container {
+    flex-shrink: 0;
+    display: block;
+    width: 316px;
+    margin-left: 24px;
+}
