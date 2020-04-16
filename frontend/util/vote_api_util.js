@@ -1,25 +1,13 @@
-export const vote = (voteType, votableType, votableId) => (
-    $.ajax({
+export const upvoteQuestion = questionId => {
+    return $.ajax({
         method: 'POST',
-        url: '/api/vote/',
-        data: {
-            votable_id: votableId,
-            votable_type: votableType,
-            vote_type: voteType
-        }
+        url: `/api/questions/${questionId}/upvote`,
     })
-);
+}
 
-export const upvoteAnswer = answerId => (
-    $.ajax({
+export const downvoteQuestion = questionId => {
+    return $.ajax({
         method: 'POST',
-        url: `/api/answers/${answerId}/upvote`,
+        url: `/api/questions/${questionId}/downvote`,
     })
-);
-
-export const downvoteAnswer = answerId => (
-    $.ajax({
-        method: 'POST',
-        url: `/api/answers/${answerId}/downvote`,
-    })
-);
+};

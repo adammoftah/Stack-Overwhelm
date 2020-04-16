@@ -2,8 +2,9 @@ import * as AnswerAPIUtil from '../util/answer_api_util';
 
 export const FETCH_ANSWERS = 'FETCH_ANSWERS';
 export const FETCH_ONE_ANSWER = 'FETCH_ONE_ANSWER';
-export const REMOVE_ANSWER = 'REMOVE_ANSWER';
 export const FETCH_ANSWER_ERRORS = 'FETCH_ANSWER_ERRORS';
+export const REMOVE_ANSWER = 'REMOVE_ANSWER';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 const fetchAnswers = payload => ({
     type: FETCH_ANSWERS,
@@ -41,8 +42,8 @@ export const fetchAnswer = answerId => dispatch => {
         });
 };
 
-export const createAnswer = (questionId, answer) => dispatch => (
-    AnswerAPIUtil.createAnswer(questionId, answer)
+export const createAnswer = (questionId, body) => dispatch => (
+    AnswerAPIUtil.createAnswer(questionId, body)
         .then(
             payload => dispatch(fetchOneAnswer(payload)),
             errors => dispatch(fetchAnswerErrors(errors.responseJSON))

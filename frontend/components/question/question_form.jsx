@@ -8,7 +8,7 @@ class QuestionForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.resizeElement = React.createRef();
         // this.renderErrors = this.renderErrors.bind(this);
-    }
+    };
 
     update(field) {
         return (event) => {
@@ -16,14 +16,14 @@ class QuestionForm extends React.Component {
                 [field]: event.target.value
             });
         };
-    }
+    };
 
     handleSubmit(event) {
         event.preventDefault();
         this.props.processQuestionForm(this.state).then(payload => {
             this.props.history.push(`/questions/${payload.question.question.id}`);
         });
-    }
+    };
 
     componentDidMount() {
         this.setState({
@@ -53,7 +53,7 @@ class QuestionForm extends React.Component {
                 resizing: false
             });
         });
-    }
+    };
 
     // renderErrors() {
     //     let errorsList = this.props.errors.map((error, idx) => {
@@ -121,11 +121,11 @@ class QuestionForm extends React.Component {
                 </div>
             </div>
         );
-    }
+    };
 
     // componentWillUnmount() {
     //     this.props.clearErrors();
     // }
-}
+};
 
 export default QuestionForm;

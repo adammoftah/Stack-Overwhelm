@@ -11,7 +11,7 @@ const questionsReducer = (oldState = {}, action) => {
             newState = Object.assign({}, oldState, action.questions);
             return newState;
         case FETCH_ONE_QUESTION:
-            newState = Object.assign({}, { [action.question.id]: action.question });
+            newState = Object.assign({}, { [action.question.question.id]: action.question });
             return newState;
         case FETCH_CURRENT_USER:
             newState = {};

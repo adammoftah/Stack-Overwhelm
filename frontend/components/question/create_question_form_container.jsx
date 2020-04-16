@@ -2,7 +2,7 @@ import QuestionForm from "./question_form";
 import { connect } from "react-redux";
 import { createQuestion, clearErrors } from "../../actions/questions_actions";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
 
     const currentUserId = state.entities.users[state.session.id].id;
 

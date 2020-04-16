@@ -12,13 +12,14 @@ export const fetchAnswer = answerId => (
     })
 );
 
-export const createAnswer = (questionId, answer) => (
-    $.ajax({
+export const createAnswer = (questionId, body) => {
+    const answer = { questionId, body }
+    return ($.ajax({
         method: 'POST',
         url: `/api/questions/${questionId}/answers`,
         data: { answer }
-    })
-);
+    }));
+};
 
 export const updateAnswer = answer => (
     $.ajax({

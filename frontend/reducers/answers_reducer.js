@@ -6,16 +6,19 @@ const answersReducer = (oldState = {}, action) => {
     let newState;
 
     switch (action.type) {
-        case FETCH_ONE_QUESTION:
-            return oldState;
         case FETCH_ALL_QUESTIONS:
             newState = Object.assign({}, action.payload.answers);
             return newState;
         case FETCH_ONE_QUESTION:
-            newState = Object.assign({}, action.payload.answers);
+            newState = Object.assign({}, action.question.answers);
             return newState;
         case FETCH_ONE_ANSWER:
-            newState = Object.assign({}, oldState, { [action.answer.id]: action.answer });
+            let answers = {};
+            Object.keys(action.answer).forEach(answerId => {
+                answers[answerId] = action.answer[answerId];
+            });
+
+            newState = Object.assign({}, oldState, answers);
             return newState;
         case REMOVE_ANSWER:
             newState = Object.assign({}, oldState);

@@ -3,14 +3,13 @@ import * as QuestionAPIUtil from "../util/question_api_util";
 export const FETCH_QUESTION_ERRORS = "FETCH_QUESTION_ERRORS";
 export const FETCH_ALL_QUESTIONS = "FETCH_ALL_QUESTIONS";
 export const FETCH_ONE_QUESTION = "FETCH_ONE_QUESTION";
-export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const REMOVE_QUESTION = "REMOVE_QUESTION";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 export const fetchAllQuestions = questions => ({
     type: FETCH_ALL_QUESTIONS,
     questions
 });
-
 
 export const fetchOneQuestion = question => ({
     type: FETCH_ONE_QUESTION,
@@ -43,7 +42,7 @@ export const fetchQuestions = () => dispatch => (
 export const fetchQuestion = id => dispatch => (
     QuestionAPIUtil.fetchQuestion(id).then(
         question => {
-            return dispatch(fetchQuestion(question));
+            return dispatch(fetchOneQuestion(question));
         }
     )
 );

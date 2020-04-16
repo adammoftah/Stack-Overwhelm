@@ -1,9 +1,6 @@
 class Vote < ApplicationRecord
     belongs_to :votable, polymorphic: true
 
-    belongs_to :voter,
-        class_name: :User
-
     UPVOTE = 'up_vote'
     DOWNVOTE = 'down_vote'
     VOTE_TYPES = [UPVOTE, DOWNVOTE]

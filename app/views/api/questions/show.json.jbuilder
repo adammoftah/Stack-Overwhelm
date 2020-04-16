@@ -8,4 +8,10 @@ json.authors do
     end
 end
 
-
+json.answers do
+    @question.answers.each do |answer|
+        json.set! answer.id do
+            json.extract! answer, :id, :author_id, :question_id, :body, :score, :created_at
+        end
+    end
+end
