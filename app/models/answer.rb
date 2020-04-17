@@ -1,5 +1,5 @@
 class Answer < ApplicationRecord
-    # include Voteable
+    include Votable
 
     belongs_to :author,
         foreign_key: :author_id,

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       resources :answers, only: [:create]
     end
 
-    resources :answers, only: [:update, :destroy] do
+    resources :answers, only: [:show, :update, :destroy] do
       member do
         post 'upvote'
         post 'downvote'

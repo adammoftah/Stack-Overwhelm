@@ -20,6 +20,7 @@ class Api::QuestionsController < ApplicationController
 
     def show
         @question = Question.find(params[:id])
+        @author = User.find_by(id: @question.author_id)
         render :show
     end
 
@@ -43,9 +44,25 @@ class Api::QuestionsController < ApplicationController
         end
     end
 
+    def downvote
+        vote(-1)
+    end
+
+    def upvote
+        vote(1)
+    end
+
     private 
 
     def question_params 
         params.require(:question).permit(:title, :body)
+    end
+
+    def vote(direction)
+        @question = Question.find(params[:id])
+        @vote = @question.votes.find_or_initialize_by(user: current_user)
+        @vote.update(value: direction)
+
+        render :show
     end
 end

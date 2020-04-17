@@ -8,6 +8,16 @@ class Header extends React.Component {
 
     render() {
         const { currentUser, logout } = this.props;
+
+        let menuButton = (<></>)
+
+        if (!currentUser) {
+            menuButton = (
+                <img id="menu-button" src="/images/menu.png"></img>
+            )
+        }
+
+
         const loggedIn = () => (
             <>
             </>
@@ -38,7 +48,7 @@ class Header extends React.Component {
         return (
             <header className="navbar">
                 <div className="navbar-items">
-                    <img id="menu-button" src="/images/menu.png"></img>
+                    {menuButton}
                     <Link to="/" id="site-header-link">
                         <img id="logo" src="/images/logo.svg" />
                     </Link>

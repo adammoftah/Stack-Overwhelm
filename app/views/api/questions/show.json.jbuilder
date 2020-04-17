@@ -11,7 +11,8 @@ end
 json.answers do
     @question.answers.each do |answer|
         json.set! answer.id do
-            json.extract! answer, :id, :author_id, :question_id, :body, :score, :created_at
+            json.extract! answer, :id, :author_id, :question_id, :body, :created_at
+            json.extract! answer.author, :display_name
         end
     end
 end

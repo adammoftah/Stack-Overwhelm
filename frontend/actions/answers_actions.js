@@ -12,11 +12,13 @@ const fetchAnswers = payload => ({
     users: payload.users,
 });
 
-const fetchOneAnswer = payload => ({
-    type: FETCH_ONE_ANSWER,
-    answer: payload.answer,
-    user: payload.user,
-});
+const fetchOneAnswer = payload => {
+    return {
+        type: FETCH_ONE_ANSWER,
+        answer: payload.answer,
+        user: payload.user,
+    };
+};
 
 const removeAnswer = payload => ({
     type: REMOVE_ANSWER,

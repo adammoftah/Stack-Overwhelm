@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_043940) do
+ActiveRecord::Schema.define(version: 2020_04_16_183200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2020_04_16_043940) do
   create_table "answers", force: :cascade do |t|
     t.integer "author_id", null: false
     t.integer "question_id", null: false
-    t.integer "score", default: 0
     t.string "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -32,7 +31,6 @@ ActiveRecord::Schema.define(version: 2020_04_16_043940) do
     t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "score", default: 0
     t.index ["author_id"], name: "index_questions_on_author_id"
   end
 
@@ -49,12 +47,14 @@ ActiveRecord::Schema.define(version: 2020_04_16_043940) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer "voter_id", null: false
-    t.string "votable_type"
-    t.bigint "votable_id"
-    t.string "vote_type", null: false
+    t.integer "user_id", null: false
+    t.integer "value", null: false
+    t.integer "votable_id", null: false
+    t.string "votable_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "votable_type", "votable_id"], name: "index_votes_on_user_id_and_votable_type_and_votable_id", unique: true
+    t.index ["user_id"], name: "index_votes_on_user_id"
     t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
   end
 

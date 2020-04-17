@@ -116,7 +116,6 @@ class QuestionForm extends React.Component {
                         </div>
                     </form>
                     <aside id="question-form-aside-container">
-                        Right side
                     </aside>
                 </div>
             </div>

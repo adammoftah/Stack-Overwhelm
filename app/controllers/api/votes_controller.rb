@@ -4,10 +4,6 @@ class Api::VotesController < ApplicationController
 
   def vote 
     vote_type = params[:vote_type]
-    # if !(Vote.vote_types.include?(vote_type))
-    #   render json: ["Unknown vote type #{vote_type}"], status: 422
-    #   return
-    # end
 
     voter_id = current_user.id
     votable_type = params[:votable_type]

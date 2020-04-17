@@ -1,0 +1,132 @@
+#question-show-page {
+    background-color: white;
+}
+
+#question-show-container {
+    margin: 0 82px;
+    max-width: 1100px;
+    width: calc(100% - 164px);
+    border: 1px solid #d6d9dc;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+#question-show-title {
+
+}
+
+.question-show-title-row {
+    display: flex;
+}
+
+.question-show-activity {
+    flex-wrap: wrap;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: #e4e6e8;
+    font-size: 13px;
+}
+
+#question-show-title-header {
+    margin-bottom: 8px;
+    color: #3c4146;
+    font-size: 27px;
+    line-height: 35.1px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    flex-grow: 1;
+    margin-right: 12px;
+}
+
+.ask-question-button, .ask-question-button:visited {
+    padding: 10.4px;
+    white-space: nowrap;
+    background-color: #0095ff;
+    color: #ffffff;
+    align-self: flex-start;
+}
+
+.ask-question-button:hover {
+    background-color: #0077cc;
+    color: #ffffff;
+}
+
+.question-show-activity-pair {
+    margin-bottom: 8px;
+    margin-right: 16px;
+}
+
+.question-show-activity-key {
+    color: #6a737c;
+    margin-right: 2px;
+    white-space: nowrap;
+}
+
+#question-show-mainbar {
+    width: 728px;
+}
+
+#question-show-question {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: #e4e6e8;
+}
+
+.question-show-grid {
+    width: auto;
+    padding-right: 16px;
+}
+
+.question-show-vote-container {
+    grid-column: 1;
+}
+
+.question-show-vote {
+    margin: -2px;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    color: #bbc0c4;
+}
+
+.question-show-vote-grid {
+    margin: 2px;
+}
+
+.question-show-vote-grid-vote {
+    height: 36px;
+    cursor: pointer;
+    padding: 0;
+    border: none;
+    outline: none;
+    font: unset;
+    border-radius: 0;
+    color: unset;
+    background: none;
+    box-shadow: none;
+    fill: #bbc0c4;
+}
+
+.question-show-vote-score {
+    color: #6a737c;
+    font-size: 21px;
+    line-height: 27.5px;
+    align-self: center;
+}
+
+.question-show-post {
+    grid-column: 2;
+}
+
+.question-show-post-body {
+    margin-bottom: 5px;
+    font-size: 15px;
+    line-height: 19.5px;
+    white-space: pre-line;
+}
