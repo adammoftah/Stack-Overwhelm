@@ -1,24 +1,22 @@
-# README
+# Stack Overwhelm
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
+Stack Overwhelm is an online question forum modeled after [Stack Overflow](https://stackoverflow.com)
 
-Things you may want to cover:
+Acess the live site [here](http://stackoverwhelm.herokuapp.com/) or at (http://stackoverwhelm.herokuapp.com/)
 
-* Ruby version
 
-* System dependencies
+![Alt text](app/assets/images/splash.png "Splash Page")
+W
+## Features
 
-* Configuration
++ **Questions and Answers** - Field questions and answers to a community of programmers and enthusiasts!
 
-* Database creation
++ **Voting** - Reward intriguing questions and insightful answers with upvotes; Downvote responses that require revisions.
 
-* Database initialization
+## Technologies
++ StackOverwhelm is built using React and Redux to manage frontend with Ruby on Rails PostgreSQL managing the backend and database, respectively. 
 
-* How to run the test suite
+## Code highlights
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A custom text input was implemented for
