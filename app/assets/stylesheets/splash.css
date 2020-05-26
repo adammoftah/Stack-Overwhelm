@@ -1,33 +1,79 @@
 .splash-banner {
-    box-sizing: border-box;
-    background-color: #ffcf10;
-    padding: 128px 0;
-    margin: 0;
-    text-align: center;
-    background-image: url("/images/banner.svg");
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: cover;
+  background-color: #ffcf10;
+  box-sizing: border-box;
+  padding: 128px 0;
+  margin: 0;
+  text-align: center;
+  background-image: url("/images/banner.svg");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+}
+
+.secondary-content {
+  background-color: white;
+  box-sizing: border-box;
+  padding: 128px 0;
+  margin: 0;
+  text-align: center;
 }
 
 #splash-banner-header {
-    color: #242729;
-    font-family: 'Roboto Slab Bold',serif;
-    font-weight: 700;
-    font-size: 55px;
-    line-height: 71.5px;
-    margin: 0 auto 16px auto;
+  color: #242729;
+  font-family: "Roboto Slab Bold", serif;
+  font-weight: 700;
+  font-size: 55px;
+  line-height: 71.5px;
+  margin: 0 auto 16px auto;
+}
+
+text {
+  font-family: "Roboto Slab Bold", serif;
+}
+
+#orange-rule {
+  background-color: #f48024;
+  border-radius: 1000px;
+  height: 8px;
+  margin-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 64px;
+}
+
+#secondary-title {
+  color: #242729;
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  font-size: 34;
+  line-height: 44.2 px;
+  margin: 0 auto 16px auto;
 }
 
 #splash-banner-heart {
-    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif;
+  font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
+    sans-serif;
 }
 
 #splash-banner-blurb {
-    color: #242729;
-    max-width: 421.5px;
-    text-align: center;
-    margin: 0 auto 24px auto;
-    font-size: 21px;
-    font-family: "Source Sans Pro", sans-serif;
+  color: #242729;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 21px;
+  margin: 0 auto 24px auto;
+  max-width: 421.5px;
+  text-align: center;
+}
+
+#secondary-text {
+  color: #242729;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 17px;
+  margin: 0 auto 24px auto;
+  max-width: 40.5128205rem;
+  text-align: center;
+}
+
+#open-community {
+  color: #f48024;
 }

@@ -16,3 +16,13 @@ json.answers do
         end
     end
 end
+
+json.votes do 
+  @question.votes.each do |vote|
+    json.set! vote.id do
+      json.userId vote.user_id
+      json.votableId vote.voteable_id
+      json.votableType vote.votable_type
+      json.value vote.value
+    end
+end
