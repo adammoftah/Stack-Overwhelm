@@ -55,11 +55,8 @@ class Api::AnswersController < ApplicationController
 
     def vote(direction)
         @answer = Answer.find(params[:id])
-        @vote = @answer.vote.find_or_initialize_by(user: current_user)
-
-        unless @vote.update(value: direction)
-            flash[:errors] = @vote.errors.full_messages
-        end
+        @vote = @answer.votes.find_or_initialize_by(user: current_user)
+        @vote.update(value: direction)
 
         render :show
     end

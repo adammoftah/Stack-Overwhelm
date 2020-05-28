@@ -61,25 +61,40 @@ class QuestionShow extends React.Component {
   }
 
   changeVote(vote) {
+    let newUserVote;
+    if (vote === this.state.currentUserVote) {
+      newUserVote = 0;
+    }
     if (vote === 1) {
       this.props.upvote(this.props.question.id);
-      this.setState({
-        currentUserVote: 1,
-      });
+      if (newUserVote === undefined) {
+        newUserVote = 1;
+      }
     } else if (vote === -1) {
       this.props.downvote(this.props.question.id);
+      if (newUserVote === undefined) {
+        newUserVote = -1;
+      }
+    }
+
+    this.setState({
+      currentUserVote: newUserVote,
+    });
+  }
+
+  componentDidUpdate() {
+    if (this.state.votes === undefined && this.props.votes !== undefined) {
+      const currentUserVote = this.props.currentUserVote
+        ? this.props.currentUserVote
+        : 0;
       this.setState({
-        currentUserVote: -1,
+        votes: this.props.votes - currentUserVote,
+        currentUserVote,
       });
     }
-    console.log(this.state);
   }
 
   render() {
-    if (!!!this.state.votes) {
-      this.state.votes = this.props.votes - this.props.currentUserVote;
-      this.state.currentUserVote = this.props.currentUserVote;
-    }
     return (
       <>
         <div id="question-show-page">
