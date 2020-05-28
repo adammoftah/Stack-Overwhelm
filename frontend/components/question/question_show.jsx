@@ -9,6 +9,7 @@ class QuestionShow extends React.Component {
       body: "",
     };
     this.submitAnswer = this.submitAnswer.bind(this);
+    this.changeVote = this.changeVote.bind(this);
     this.resizeElement = React.createRef();
   }
 
@@ -59,7 +60,26 @@ class QuestionShow extends React.Component {
     this.state.body = "";
   }
 
+  changeVote(vote) {
+    if (vote === 1) {
+      this.props.upvote(this.props.question.id);
+      this.setState({
+        currentUserVote: 1,
+      });
+    } else if (vote === -1) {
+      this.props.downvote(this.props.question.id);
+      this.setState({
+        currentUserVote: -1,
+      });
+    }
+    console.log(this.state);
+  }
+
   render() {
+    if (!!!this.state.votes) {
+      this.state.votes = this.props.votes - this.props.currentUserVote;
+      this.state.currentUserVote = this.props.currentUserVote;
+    }
     return (
       <>
         <div id="question-show-page">
@@ -97,22 +117,34 @@ class QuestionShow extends React.Component {
                   <div className="question-show-vote">
                     <button
                       className="question-show-vote-grid question-show-vote-grid-vote"
-                      onClick={() => this.props.upvote(this.props.question.id)}
+                      onClick={() => this.changeVote(1)}
                     >
-                      <svg width="36" height="36" viewBox="0 0 36 36">
+                      <svg
+                        className={
+                          this.state.currentUserVote === 1 ? "active-vote" : ""
+                        }
+                        width="36"
+                        height="36"
+                        viewBox="0 0 36 36"
+                      >
                         <path d="M2 26h32L18 10 2 26z" />
                       </svg>
                     </button>
                     <div className="question-show-vote-grid question-show-vote-score">
-                      {this.props.votes}
+                      {this.state.votes + this.state.currentUserVote}
                     </div>
                     <button
                       className="question-show-vote-grid question-show-vote-grid-vote"
-                      onClick={() =>
-                        this.props.downvote(this.props.question.id)
-                      }
+                      onClick={() => this.changeVote(-1)}
                     >
-                      <svg width="36" height="36" viewBox="0 0 36 36">
+                      <svg
+                        className={
+                          this.state.currentUserVote === -1 ? "active-vote" : ""
+                        }
+                        width="36"
+                        height="36"
+                        viewBox="0 0 36 36"
+                      >
                         <path d="M2 10h32L18 26 2 10z" />
                       </svg>
                     </button>
