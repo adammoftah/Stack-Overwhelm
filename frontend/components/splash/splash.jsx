@@ -20,7 +20,8 @@ const unauthenticatedSplash = (
           Stack Overwhelm is an{" "}
           <a id="open-community" href="">
             open community
-          </a>{" "}
+          </a>
+          {"  "}
           for anyone that codes. We help you get answers to your toughest coding
           questions, share knowledge with your coworkers in private, and follow
           your dreams.
