@@ -76,7 +76,6 @@ class QuestionShow extends React.Component {
         newUserVote = -1;
       }
     }
-
     this.setState({
       currentUserVote: newUserVote,
     });
@@ -95,6 +94,12 @@ class QuestionShow extends React.Component {
   }
 
   render() {
+    let currentUserVote = 0;
+
+    if (this.state.currentUserVote) {
+      currentUserVote = this.state.currentUserVote;
+      console.log(currentUserVote);
+    }
     return (
       <>
         <div id="question-show-page">
@@ -136,7 +141,7 @@ class QuestionShow extends React.Component {
                     >
                       <svg
                         className={
-                          this.state.currentUserVote === 1 ? "active-vote" : ""
+                          currentUserVote === 1 ? "active-vote" : ""
                         }
                         width="36"
                         height="36"
@@ -146,7 +151,7 @@ class QuestionShow extends React.Component {
                       </svg>
                     </button>
                     <div className="question-show-vote-grid question-show-vote-score">
-                      {this.state.votes + this.state.currentUserVote}
+                      {this.state.votes + currentUserVote}
                     </div>
                     <button
                       className="question-show-vote-grid question-show-vote-grid-vote"
@@ -154,7 +159,7 @@ class QuestionShow extends React.Component {
                     >
                       <svg
                         className={
-                          this.state.currentUserVote === -1 ? "active-vote" : ""
+                          currentUserVote === -1 ? "active-vote" : ""
                         }
                         width="36"
                         height="36"

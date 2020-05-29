@@ -2,10 +2,13 @@ import * as VoteAPIUtil from '../util/vote_api_util';
 
 export const HANDLE_VOTE = 'HANDLE_VOTE';
 
-export const handleVote = vote => ({
-    type: HANDLE_VOTE,
-    vote
-});
+export const handleVote = vote => {
+    console.log(vote);
+    return {
+        type: HANDLE_VOTE,
+        vote
+    }
+};
 
 export const upvoteQuestion = questionId => dispatch => (
     VoteAPIUtil.upvoteQuestion(questionId).then(

@@ -6,8 +6,18 @@ import Answer from './answer';
 const mapStateToProps = (state, ownProps) => {
     const author = state.entities.users[ownProps.answer.authorId];
     const isLoggedIn = !!state.session.id;
-
-    // const isAuthor = (state.session.id === author.id);
+    let votes;
+    let currentUserVote = 0;
+    // if (Object.keys(tempQuestion.votes).length > 0) {
+    //     votes = 0;
+    //     Object.keys(tempQuestion.votes).forEach((vote) => {
+    //         let currentVote = tempQuestion.votes[vote];
+    //         votes += currentVote.value;
+    //         if (currentVote.userId === state.session.id) {
+    //             currentUserVote = currentVote.value;
+    //         }
+    //     });
+    // }
     return {
         answer: ownProps.answer,
         author: author,
