@@ -14,7 +14,7 @@ const Footer = () => {
                     <ul className="footer-list">
                         <li className="footer-list-item">adam.moftah@gmail.com</li>
                         <li className="footer-list-item">https://adammoftah.com</li>
-                        <li className="footer-list-item">(917) 513-2900</li>
+                        <li className="footer-list-item">(917)513-2900</li>
                     </ul>
                 </div>
             </div>
