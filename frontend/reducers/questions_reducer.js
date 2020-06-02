@@ -8,7 +8,7 @@ const questionsReducer = (oldState = {}, action) => {
 
     switch (action.type) {
         case FETCH_ALL_QUESTIONS:
-            newState = Object.assign({}, oldState, action.questions);
+            newState = Object.assign({}, action.questions.questions);
             return newState;
         case FETCH_ONE_QUESTION:
             newState = Object.assign({}, { [action.question.question.id]: action.question });

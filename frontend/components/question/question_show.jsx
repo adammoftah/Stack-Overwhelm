@@ -62,19 +62,16 @@ class QuestionShow extends React.Component {
 
   changeVote(vote) {
     let newUserVote;
-    if (vote === this.state.currentUserVote) {
-      newUserVote = 0;
-    }
     if (vote === 1) {
       this.props.upvote(this.props.question.id);
-      if (newUserVote === undefined) {
-        newUserVote = 1;
-      }
+      newUserVote = 1;
     } else if (vote === -1) {
       this.props.downvote(this.props.question.id);
-      if (newUserVote === undefined) {
-        newUserVote = -1;
-      }
+      newUserVote = -1;
+    }
+
+    if (vote === this.state.currentUserVote) {
+      newUserVote = 0;
     }
     this.setState({
       currentUserVote: newUserVote,

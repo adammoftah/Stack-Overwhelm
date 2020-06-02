@@ -5,14 +5,13 @@ import Answer from './answer';
 
 const mapStateToProps = (state, ownProps) => {
 	const answer = ownProps.answer;
-	console.log(answer, "suh");
+	// console.log(answer, "suh");
 	const author = state.entities.users[answer.authorId];
 	const isLoggedIn = !!state.session.id;
 	let votes = 0;
 	let currentUserVote = 0;
 
-	if (Object.keys(answer.votes).length > 0) {
-
+	if (answer.votes && Object.keys(answer.votes).length > 0) {
 		Object.keys(answer.votes).forEach((vote) => {
 			let currentVote = answer.votes[vote];
 			votes += currentVote.value;
@@ -21,6 +20,7 @@ const mapStateToProps = (state, ownProps) => {
 			}
 		});
 	}
+	console.log(votes);
 	return {
 		answer,
 		author,

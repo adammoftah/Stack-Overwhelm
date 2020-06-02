@@ -7,9 +7,6 @@ const answersReducer = (oldState = {}, action) => {
     let newState;
 
     switch (action.type) {
-        case FETCH_ALL_QUESTIONS:
-            newState = Object.assign({}, action.payload.answers);
-            return newState;
         case FETCH_ONE_QUESTION:
             newState = Object.assign({}, action.question.answers);
             return newState;

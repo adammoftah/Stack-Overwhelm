@@ -1,4 +1,5 @@
 import React from "react";
+import QuestionIndexContainer from '../question/question_index_container'
 import { Link } from "react-router-dom";
 
 const unauthenticatedSplash = (
@@ -47,6 +48,7 @@ const authenticatedSplash = (
           </div>
         </div>
       </div>
+      <QuestionIndexContainer />
     </div>
   </>
 );

@@ -3,39 +3,28 @@ import React from 'react';
 class Answer extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {
+			votes: this.props.votes,
+			currentUserVote: this.props.currentUserVote,
+		}
 		this.handleDelete = this.handleDelete.bind(this);
 		this.changeVote = this.changeVote.bind(this);
 	}
 
-	componentDidUpdate() {
-		if (this.state.votes === undefined && this.props.votes !== undefined) {
-			const currentUserVote = this.props.currentUserVote
-				? this.props.currentUserVote
-				: 0;
-			this.setState({
-				votes: this.props.votes - currentUserVote,
-				currentUserVote,
-			});
-		}
-	}
-
 	changeVote(vote) {
 		let newUserVote;
+		if (vote === 1) {
+			this.props.upvote(this.props.answer.id);
+			newUserVote = 1;
+		} else if (vote === -1) {
+			this.props.downvote(this.props.answer.id);
+			newUserVote = -1;
+		}
+
 		if (vote === this.state.currentUserVote) {
 			newUserVote = 0;
 		}
-		if (vote === 1) {
-			this.props.upvote(this.props.question.id);
-			if (newUserVote === undefined) {
-				newUserVote = 1;
-			}
-		} else if (vote === -1) {
-			this.props.downvote(this.props.question.id);
-			if (newUserVote === undefined) {
-				newUserVote = -1;
-			}
-		}
+
 		this.setState({
 			currentUserVote: newUserVote,
 		});
