@@ -1,9 +1,17 @@
 json.questions do 
-    @questions.each do |question| 
-        json.set! question.id do 
-            json.partial! "api/questions/question", question: question
-        end
-    end
+	@questions.each do |question| 
+		json.set! question.id do 
+			json.partial! "api/questions/question", question: question
+			question.votes.each do |vote|
+				json.set! vote.id do
+					json.userId vote.user_id
+					json.votableId vote.votable_id
+					json.votableType vote.votable_type
+					json.value vote.value
+				end
+			end
+		end
+	end
 end
 
 json.users do  
@@ -13,3 +21,16 @@ json.users do
         end 
     end
 end 
+
+json.votes do 
+  @questions.each do |question|
+    question.votes.each do |vote|
+			json.set! vote.id do
+				json.userId vote.user_id
+				json.votableId vote.votable_id
+				json.votableType vote.votable_type
+				json.value vote.value
+			end
+    end
+	end
+end

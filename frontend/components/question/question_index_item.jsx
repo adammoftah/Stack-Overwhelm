@@ -6,7 +6,7 @@ class QuestionIndexItem extends React.Component {
   }
 
   render() {
-    // const { numVotes, numAnswers, questionTitle, questionBody } = this.props;
+    const { votes, /*numAnswers,*/ title, body } = this.props;
     return (
       <>
 
