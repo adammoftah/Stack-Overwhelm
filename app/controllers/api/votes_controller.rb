@@ -17,15 +17,13 @@ class Api::VotesController < ApplicationController
     end
 
     existing_vote = Vote.find_by(voter_id: voter_id, votable_type: votable_type, votable_id: votable_id)
-    debugger
     if existing_vote.nil?
-        new_vote.save!
-        @votable.addVote(new_vote);
+      new_vote.save!
+      @votable.addVote(new_vote);
     else
-      debugger
         if !(new_vote.vote_type == existing_vote.vote_type)
-            new_vote.save!
-            @votable.addVote(new_vote);
+          new_vote.save!
+          @votable.addVote(new_vote);
         end
         existing_vote.destroy
         @votable.undoVote(existing_vote)
