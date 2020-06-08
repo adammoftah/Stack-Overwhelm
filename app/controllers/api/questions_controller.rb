@@ -52,6 +52,16 @@ class Api::QuestionsController < ApplicationController
         vote(1)
     end
 
+    def search
+        @users = User.all
+        args = params[:args].split(" ")
+        @questions = []
+        args.each do |arg| 
+            @questions.concat(Question.where("lower(title) LIKE lower(:args)", args: "%#{arg}%"))
+        end
+        render :index
+    end
+
     private 
 
     def question_params 

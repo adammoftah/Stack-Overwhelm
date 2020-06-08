@@ -12,10 +12,9 @@ class QuestionIndex extends React.Component {
 	}
 
 	render() {
-		console.log(this.props);
 		return (
 			<>
-				<div>
+				<div id="questions-list">
 					{this.props.questions &&
 						this.props.questions.map((question) => (
 							<QuestionIndexItemContainer key={question.id} question={question} />

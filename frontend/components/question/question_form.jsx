@@ -122,10 +122,10 @@ class QuestionForm extends React.Component {
               </label>
 
               {/* 
-                            <label id="question-form-body-container">
-                                <span className="body">Body</span>
-                                <textarea onChange={this.update("body")} value={this.state ? this.state.body : ""}></textarea>
-                            </label> */}
+                <label id="question-form-body-container">
+                    <span className="body">Body</span>
+                    <textarea onChange={this.update("body")} value={this.state ? this.state.body : ""}></textarea>
+                </label> */}
               <div id="question-form-errors-container">
                 <input
                   type="Submit"

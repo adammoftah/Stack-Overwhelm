@@ -1,6 +1,7 @@
 import React from "react";
 import AnswerContainer from "../answer/answer_container";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 class QuestionShow extends React.Component {
   constructor(props) {
@@ -94,8 +95,9 @@ class QuestionShow extends React.Component {
     }
   }
 
-  caclulateTimeSince(created_at) {
-    return new Date().getTime - new Date(created_at).getTime;
+  caclulateTimeSince(time) {
+    const timeSince = moment(time);
+    return timeSince.fromNow();
   }
 
   render() {
@@ -136,7 +138,7 @@ class QuestionShow extends React.Component {
                 <span className="question-show-activity-pair">
                   <span className="question-show-activity-key">Active</span>
                   &nbsp;
-                  <time dateTime={this.props.question.updated_at}>today</time>
+                   <time dateTime={this.props.question.updated_at}>{this.caclulateTimeSince(this.props.question.updated_at)}</time>
                 </span>
               </div>
             </div>
