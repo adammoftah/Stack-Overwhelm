@@ -1,34 +1,56 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class QuestionIndexItem extends React.Component {
   constructor(props) {
     super(props);
+    this.handleRedirect = this.handleRedirect.bind(this);
+  }
+
+  handleRedirect() {
+    this.props.clearEntity();
+    this.props.history.push('/questions/' + this.props.id);
   }
 
   render() {
-    const { votes, numAnswers, title, body, id } = this.props;
+    const { votes, numAnswers, title, body } = this.props;
+    let pluralVotes;
+    let pluralAnswers;
+    if (votes === 1) {
+      pluralVotes = "vote"
+    } else {
+      pluralVotes = "votes"
+    }
+    if (numAnswers === 1) {
+      pluralAnswers = "answer"
+    } else {
+      pluralAnswers = "answers"
+    }
+
+
+
     return (
       <>
         <div id="index-item">
           <div className="question-stats">
             <div className="stat-vote-section">
               <span className="stat-num">{votes}</span>
-              <span className="stat-label">votes</span>
+              <span className="stat-label">{pluralVotes}</span>
             </div>
             <div className="stat-answer-section">
               <span className="stat-num">{numAnswers}</span>
-              <span className="stat-label">answers</span>
+              <span className="stat-label">{pluralAnswers}</span>
             </div>
           </div>
           <div className="question-preview">
             <div className="question-preview-title">
-              <Link
+              <a
                 className="question-preview-title-text"
-                to={'/questions/' + id}
+                onClick={() => this.handleRedirect()}
+              // to={'/questions/' + id}
               >
                 {title}
-              </Link>
+              </a>
             </div>
             <div className="question-preview-body">
               {body}
@@ -40,4 +62,4 @@ class QuestionIndexItem extends React.Component {
   }
 }
 
-export default QuestionIndexItem;
+export default withRouter(QuestionIndexItem);

@@ -1,5 +1,6 @@
 import { FETCH_ALL_QUESTIONS, FETCH_ONE_QUESTION, REMOVE_QUESTION } from "../actions/questions_actions";
 import { FETCH_CURRENT_USER } from "../actions/sessions_actions";
+import { CLEAR_ENTITY } from "../actions/entity_actions";
 
 const questionsReducer = (oldState = {}, action) => {
 
@@ -20,6 +21,8 @@ const questionsReducer = (oldState = {}, action) => {
             newState = Object.assign({}, oldState);
             delete newState[action.questionId];
             return newState;
+        case CLEAR_ENTITY:
+            return {};
         default:
             return oldState;
     }

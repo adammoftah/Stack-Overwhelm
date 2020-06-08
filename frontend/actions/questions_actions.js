@@ -4,6 +4,7 @@ export const FETCH_QUESTION_ERRORS = "FETCH_QUESTION_ERRORS";
 export const FETCH_ALL_QUESTIONS = "FETCH_ALL_QUESTIONS";
 export const FETCH_ONE_QUESTION = "FETCH_ONE_QUESTION";
 export const REMOVE_QUESTION = "REMOVE_QUESTION";
+export const CLEAR_QUESTIONS = "CLEAR_QUESTIONS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 export const fetchAllQuestions = questions => ({
@@ -72,4 +73,4 @@ export const deleteQuestion = (id) => (dispatch) => {
         () => {
             return dispatch(removeQuestion(id));
         });
-}; 
+};

@@ -54,3 +54,8 @@
 .question-preview-title {
   color: #0064bd;
 }
+
+.question-preview-body {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

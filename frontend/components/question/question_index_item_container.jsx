@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import QuestionIndexItem from './question_index_item';
+import { clearEntity } from '../../actions/entity_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let question = ownProps.question;
@@ -18,14 +19,14 @@ const mapStateToProps = (state, ownProps) => {
       delete question[key];
     }
   });
-  console.log(question);
+
   return {
     ...question
   };
 }
 
 const mapDispatchToProps = dispatch => ({
-
+  clearEntity: () => dispatch(clearEntity())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionIndexItem);

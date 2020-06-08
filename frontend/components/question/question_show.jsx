@@ -13,14 +13,12 @@ class QuestionShow extends React.Component {
     this.resizeElement = React.createRef();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.routeParams !== nextProps.routeParams) {
-      this.props.fetchOneQuestion(this.props.questionId);
-    }
-  }
-
   componentWillMount() {
     this.props.fetchOneQuestion(this.props.questionId);
+  }
+
+  componentWillUnmount() {
+    this.props.clearEntity();
   }
 
   componentDidMount() {
@@ -96,12 +94,22 @@ class QuestionShow extends React.Component {
     }
   }
 
+  caclulateTimeSince(created_at) {
+    return new Date().getTime - new Date(created_at).getTime;
+  }
+
   render() {
     let currentUserVote = 0;
+    let votes = 0;
 
     if (this.state.currentUserVote) {
       currentUserVote = this.state.currentUserVote;
     }
+
+    if (this.state.votes) {
+      votes = this.state.votes;
+    }
+
     return (
       <>
         <div id="question-show-page">
@@ -122,7 +130,7 @@ class QuestionShow extends React.Component {
                 <span className="question-show-activity-pair">
                   <span className="question-show-activity-key">Asked</span>
                   &nbsp;
-                  <time dateTime={this.props.question.created_at}>today</time>
+                  <time dateTime={this.props.question.created_at}>{this.caclulateTimeSince(this.props.question.created_at)}</time>
                 </span>
 
                 <span className="question-show-activity-pair">
@@ -153,7 +161,7 @@ class QuestionShow extends React.Component {
                       </svg>
                     </button>
                     <div className="question-show-vote-grid question-show-vote-score">
-                      {this.state.votes + currentUserVote}
+                      {votes + currentUserVote}
                     </div>
                     <button
                       className="question-show-vote-grid question-show-vote-grid-vote"

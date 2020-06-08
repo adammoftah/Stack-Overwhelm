@@ -3,9 +3,9 @@ import { fetchQuestion } from "../../actions/questions_actions";
 import { createAnswer } from "../../actions/answers_actions";
 import { upvoteQuestion, downvoteQuestion } from "../../actions/votes_actions";
 import QuestionShow from "./question_show";
+import { clearEntity } from "../../actions/entity_actions";
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
   const questionId = ownProps.match.params.questionId;
   let question = {};
   let author = {};
@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
     const tempQuestion = state.entities.questions[questionId];
     question = tempQuestion.question;
     author = tempQuestion.authors[question.author_id];
-    if (Object.keys(tempQuestion.votes).length > 0) {
+    if (tempQuestion.votes && Object.keys(tempQuestion.votes).length > 0) {
       votes = 0;
       Object.keys(tempQuestion.votes).forEach((vote) => {
         let currentVote = tempQuestion.votes[vote];
@@ -52,6 +52,7 @@ const mapDispatchToProps = (dispatch) => ({
   submitAnswer: (questionId, body) => dispatch(createAnswer(questionId, body)),
   upvote: (questionId) => dispatch(upvoteQuestion(questionId)),
   downvote: (questionId) => dispatch(downvoteQuestion(questionId)),
+  clearEntity: () => dispatch(clearEntity()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionShow);

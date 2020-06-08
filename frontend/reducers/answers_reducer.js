@@ -1,6 +1,7 @@
 import { FETCH_ONE_ANSWER, REMOVE_ANSWER } from "../actions/answers_actions";
 import { FETCH_ONE_QUESTION, FETCH_ALL_QUESTIONS } from "../actions/questions_actions";
 import { HANDLE_VOTE } from "../actions/votes_actions";
+import { CLEAR_ENTITY } from "../actions/entity_actions";
 
 const answersReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
@@ -24,6 +25,8 @@ const answersReducer = (oldState = {}, action) => {
         case HANDLE_VOTE:
             newState = Object.assign({}, oldState, action.vote.answer);
             return newState;
+        case CLEAR_ENTITY:
+            return {};
         default:
             return oldState;
     }
