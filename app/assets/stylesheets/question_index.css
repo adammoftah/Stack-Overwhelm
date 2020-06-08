@@ -1,0 +1,24 @@
+#index-item{
+  display: flex;
+  font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+}
+
+.question-stats {
+  align-items: flex-start;
+  box-sizing: content-box;
+  color: #848d95;
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  float: none;
+  margin-right: 0;
+  padding: 0 8px 0 0;
+}
+
+.stat-num {
+  font-size: 17px;
+}
+
+.stat-label {
+  font-size: 11px;
+}

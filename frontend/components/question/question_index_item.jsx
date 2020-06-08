@@ -6,9 +6,20 @@ class QuestionIndexItem extends React.Component {
   }
 
   render() {
-    const { votes, /*numAnswers,*/ title, body } = this.props;
+    const { votes, numAnswers, title, body } = this.props;
     return (
       <>
+        <div>
+
+          <div id="question-stats">
+            <span>{votes}</span> <span>votes</span>
+            {numAnswers} <span>answers</span>
+          </div>
+          <div>
+            {title}
+            {body}
+          </div>
+        </div>
 
       </>
     )

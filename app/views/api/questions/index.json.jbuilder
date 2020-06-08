@@ -1,3 +1,4 @@
+num_answers = 0
 json.questions do 
 	@questions.each do |question| 
 		json.set! question.id do 
@@ -10,6 +11,11 @@ json.questions do
 					json.value vote.value
 				end
 			end
+			num_answers = 0
+			question.answers.each do |answer|
+				num_answers += 1
+			end
+			json.numAnswers num_answers
 		end
 	end
 end
