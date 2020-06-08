@@ -13,6 +13,12 @@ class QuestionShow extends React.Component {
     this.resizeElement = React.createRef();
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.routeParams !== nextProps.routeParams) {
+      this.props.fetchOneQuestion(this.props.questionId);
+    }
+  }
+
   componentWillMount() {
     this.props.fetchOneQuestion(this.props.questionId);
   }
@@ -95,7 +101,6 @@ class QuestionShow extends React.Component {
 
     if (this.state.currentUserVote) {
       currentUserVote = this.state.currentUserVote;
-      console.log(currentUserVote);
     }
     return (
       <>

@@ -5,7 +5,6 @@ import Answer from './answer';
 
 const mapStateToProps = (state, ownProps) => {
 	const answer = ownProps.answer;
-	// console.log(answer, "suh");
 	const author = state.entities.users[answer.authorId];
 	const isLoggedIn = !!state.session.id;
 	let votes = 0;
@@ -20,7 +19,6 @@ const mapStateToProps = (state, ownProps) => {
 			}
 		});
 	}
-	console.log(votes);
 	return {
 		answer,
 		author,

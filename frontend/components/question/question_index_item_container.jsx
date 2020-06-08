@@ -2,8 +2,6 @@ import { connect } from 'react-redux';
 import QuestionIndexItem from './question_index_item';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps);
-
   let question = ownProps.question;
   delete ownProps.question;
   if (!question) {
@@ -20,7 +18,7 @@ const mapStateToProps = (state, ownProps) => {
       delete question[key];
     }
   });
-
+  console.log(question);
   return {
     ...question
   };

@@ -5,6 +5,7 @@ import { upvoteQuestion, downvoteQuestion } from "../../actions/votes_actions";
 import QuestionShow from "./question_show";
 
 const mapStateToProps = (state, ownProps) => {
+  console.log(state);
   const questionId = ownProps.match.params.questionId;
   let question = {};
   let author = {};

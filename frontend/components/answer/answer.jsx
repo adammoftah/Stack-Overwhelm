@@ -41,7 +41,6 @@ class Answer extends React.Component {
 
 		if (this.state.currentUserVote) {
 			currentUserVote = this.state.currentUserVote;
-			console.log(currentUserVote);
 		}
 		return (
 			<div id="question-show-question">
