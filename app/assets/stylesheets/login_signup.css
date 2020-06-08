@@ -1,3 +1,7 @@
+ul {
+    padding-inline-start: 0px;
+}
+
 .session-page {
     display: flex;
     align-items: center;
@@ -108,4 +112,10 @@
 
 .demo-login-button:hover {
     background-color: #af6000;
+}
+
+.session-errors {
+    color: #d1383d;
+    font-size: 14px;
+    list-style: none;
 }
