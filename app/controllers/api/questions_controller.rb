@@ -12,8 +12,17 @@ class Api::QuestionsController < ApplicationController
         end
     end
 
-    def index 
-        @questions = Question.all
+		def index 
+			debugger
+        if params[:searchTerm]
+            args = params[:searchTerm].split(" ")
+            @questions = []
+            args.each do |arg| 
+                @questions.concat(Question.where("lower(title) LIKE ?", "#{arg.downcase}"))
+            end
+        else
+            @questions = Question.all
+        end
         @users = User.all
         render :index
     end

@@ -74,3 +74,11 @@ export const deleteQuestion = (id) => (dispatch) => {
             return dispatch(removeQuestion(id));
         });
 };
+
+export const searchQuestions = (searchTerm) => (dispatch) => {
+    return QuestionAPIUtil.searchQuestions(searchTerm).then(
+        questions => {
+            return dispatch(fetchAllQuestions(questions))
+        }
+    )
+};
