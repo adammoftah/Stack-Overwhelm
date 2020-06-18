@@ -23,34 +23,36 @@ class QuestionShow extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      resizing: false,
-      currentBodyHeight: 200,
-    });
-
-    this.resizeElement.current.addEventListener("mousedown", (e) => {
-      this.setState({
-        resizing: true,
-        resizingY: e.clientY,
-      });
-    });
-
-    document.addEventListener("mousemove", (e) => {
-      if (this.state.resizing) {
-        const newHeight =
-          this.state.currentBodyHeight - (this.state.resizingY - e.clientY);
-        this.setState({
-          currentBodyHeight: newHeight,
-          resizingY: e.clientY,
-        });
-      }
-    });
-
-    document.addEventListener("mouseup", () => {
+    if (this.props.currentUser) {
       this.setState({
         resizing: false,
+        currentBodyHeight: 200,
       });
-    });
+
+      this.resizeElement.current.addEventListener("mousedown", (e) => {
+        this.setState({
+          resizing: true,
+          resizingY: e.clientY,
+        });
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (this.state.resizing) {
+          const newHeight =
+            this.state.currentBodyHeight - (this.state.resizingY - e.clientY);
+          this.setState({
+            currentBodyHeight: newHeight,
+            resizingY: e.clientY,
+          });
+        }
+      });
+
+      document.addEventListener("mouseup", () => {
+        this.setState({
+          resizing: false,
+        });
+      })
+    }
   }
 
   update(field) {
@@ -103,6 +105,7 @@ class QuestionShow extends React.Component {
   render() {
     let currentUserVote = 0;
     let votes = 0;
+    let answerForm;
 
     if (this.state.currentUserVote) {
       currentUserVote = this.state.currentUserVote;
@@ -110,6 +113,29 @@ class QuestionShow extends React.Component {
 
     if (this.state.votes) {
       votes = this.state.votes;
+    }
+
+    if (this.props.currentUser) {
+      answerForm = (
+        <form onSubmit={this.submitAnswer}>
+          <label className="question-form-field-container">
+            Your Answer
+                  <textarea
+              className="question-form-field-body"
+              onChange={this.update("body")}
+              value={this.state ? this.state.body : ""}
+              style={{ height: this.state.currentBodyHeight + "px" }}
+            />
+            <div
+              id="question-form-field-body-grippie-container"
+              ref={this.resizeElement}
+            >
+              <div id="question-form-field-body-grippie" />
+            </div>
+          </label>
+          <input type="Submit" />
+        </form>
+      )
     }
 
     return (
@@ -192,24 +218,7 @@ class QuestionShow extends React.Component {
               {this.props.answers.map((answer) => (
                 <AnswerContainer key={answer.id} answer={answer} />
               ))}
-              <form onSubmit={this.submitAnswer}>
-                <label className="question-form-field-container">
-                  Your Answer
-                  <textarea
-                    className="question-form-field-body"
-                    onChange={this.update("body")}
-                    value={this.state ? this.state.body : ""}
-                    style={{ height: this.state.currentBodyHeight + "px" }}
-                  />
-                  <div
-                    id="question-form-field-body-grippie-container"
-                    ref={this.resizeElement}
-                  >
-                    <div id="question-form-field-body-grippie" />
-                  </div>
-                </label>
-                <input type="Submit" />
-              </form>
+              {answerForm}
             </div>
           </div>
         </div>

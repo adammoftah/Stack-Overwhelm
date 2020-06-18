@@ -17,6 +17,11 @@ class Header extends React.Component {
 		})
 	}
 
+
+	handleSubmit() {
+
+	}
+
 	render() {
 		const { currentUser, logout } = this.props;
 
@@ -63,7 +68,7 @@ class Header extends React.Component {
 					<Link to="/" id="site-header-link">
 						<img id="logo" src="/images/logo.svg" />
 					</Link>
-					<form id="search-bar-container" onSubmit={() => this.props.searchQuestions(this.state.searchTerm)}>
+					<form id="search-bar-container" onSubmit={() => this.props.setSearchTerm(this.state.searchTerm)}>
 						<input id="search-bar" type="text" value={this.state.searchTerm} onChange={this.handleUpdate} placeholder="Search..."></input>
 					</form>
 					{currentUser ? greeting() : sessionLinks()}

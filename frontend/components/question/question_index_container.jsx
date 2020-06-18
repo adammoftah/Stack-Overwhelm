@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
   });
 
   return {
-    questions
+    questions: Object.values(state.entities.questions)
   };
 }
 

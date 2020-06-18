@@ -37,6 +37,7 @@ const mapStateToProps = (state, ownProps) => {
     answers,
     author,
     question,
+    currentUser: state.session.id,
   };
 
   if (votes !== undefined) {

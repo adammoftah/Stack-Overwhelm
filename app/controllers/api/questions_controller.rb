@@ -13,7 +13,6 @@ class Api::QuestionsController < ApplicationController
     end
 
 		def index 
-			debugger
         if params[:searchTerm]
             args = params[:searchTerm].split(" ")
             @questions = []

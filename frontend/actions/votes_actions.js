@@ -40,3 +40,4 @@ export const downvoteAnswer = answerId => dispatch => (
         }
     )
 );
+
