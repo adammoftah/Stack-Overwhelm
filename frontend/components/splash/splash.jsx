@@ -63,11 +63,7 @@ class Splash extends React.Component {
       // return <QuestionIndexContainer />
       return authenticatedSplash;
     } else {
-      if (this.props.questions.length) {
-        return authenticatedSplash;
-      } else {
-        return unauthenticatedSplash;
-      }
+      return unauthenticatedSplash;
     }
   }
 }

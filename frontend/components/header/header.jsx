@@ -8,6 +8,8 @@ class Header extends React.Component {
 			searchTerm: "",
 		}
 		this.handleUpdate = this.handleUpdate.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.logout = this.logout.bind(this);
 	}
 
 	handleUpdate(e) {
@@ -18,8 +20,18 @@ class Header extends React.Component {
 	}
 
 
-	handleSubmit() {
+	handleSubmit(e) {
+		e.preventDefault();
+		this.props.setSearchTerm(this.state.searchTerm);
+		this.props.history.push("/search");
+		this.setState({
+			searchTerm: "",
+		})
+	}
 
+	logout() {
+		this.props.logout();
+		this.props.history.push("/");
 	}
 
 	render() {
@@ -33,17 +45,6 @@ class Header extends React.Component {
 			)
 		}
 
-
-		const loggedIn = () => (
-			<>
-			</>
-		);
-
-		const loggedOut = () => (
-			<>
-			</>
-		);
-
 		const sessionLinks = () => (
 			<nav className="session-button-nav">
 				<Link className="session-button session-button-log" to="/login">Log in</Link>
@@ -56,7 +57,7 @@ class Header extends React.Component {
 				<span>Hi, {currentUser.display_name}!</span>
 				<nav className="session-button-nav">
 					{/* <Link className="session-button session-button-log" to="/signup">Log out</Link> */}
-					<button className="session-button session-button-log" onClick={this.props.logout}>Log out</button>
+					<button className="session-button session-button-log" onClick={this.logout}>Log out</button>
 				</nav>
 			</>
 		);
@@ -68,7 +69,7 @@ class Header extends React.Component {
 					<Link to="/" id="site-header-link">
 						<img id="logo" src="/images/logo.svg" />
 					</Link>
-					<form id="search-bar-container" onSubmit={() => this.props.setSearchTerm(this.state.searchTerm)}>
+					<form id="search-bar-container" onSubmit={this.handleSubmit}>
 						<input id="search-bar" type="text" value={this.state.searchTerm} onChange={this.handleUpdate} placeholder="Search..."></input>
 					</form>
 					{currentUser ? greeting() : sessionLinks()}

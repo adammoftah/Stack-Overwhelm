@@ -1,5 +1,6 @@
 import Header from "./header";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { logout } from "../../actions/sessions_actions";
 import { setSearchTerm } from "../../actions/search_actions"
 
@@ -13,4 +14,4 @@ const mapDispatchToProps = (dispatch) => ({
     setSearchTerm: (searchTerm) => dispatch(setSearchTerm(searchTerm)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

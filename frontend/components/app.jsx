@@ -10,6 +10,7 @@ import LogInFormContainer from './session_form/login_form_container';
 import CreateQuestionFormContainer from './question/create_question_form_container';
 import QuestionShowContainer from './question/question_show_container';
 import EditQuestionFormContainer from './question/edit_question_form_container';
+import SearchResultsContainer from './question/search_results_container';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -24,6 +25,7 @@ const App = () => (
                 <ProtectedRoute exact path="/questions/ask" component={CreateQuestionFormContainer} />
                 <Route exact path="/questions/:questionId" component={QuestionShowContainer} />
                 <ProtectedRoute exact path="/questions/:questionId/edit" component={EditQuestionFormContainer} />
+                <Route exact path="/search" component={SearchResultsContainer} />
             </Switch>
         </div>
         {/* <Footer /> */}
