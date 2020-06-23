@@ -71,3 +71,7 @@
 .question-preview-title-text {
   cursor: pointer;
 }
+
+.no-results{
+  text-align: center;
+}

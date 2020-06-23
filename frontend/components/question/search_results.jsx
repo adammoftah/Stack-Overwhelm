@@ -29,7 +29,7 @@ class SearchResults extends React.Component {
     }
     if (!this.state.questions.length) {
       return (
-        <h2>No Results Found</h2>
+        <h2 className="no-results">No Results Found</h2>
       )
     }
     return (
