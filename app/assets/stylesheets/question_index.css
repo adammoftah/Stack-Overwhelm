@@ -67,3 +67,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.question-preview-title-text {
+  cursor: pointer;
+}

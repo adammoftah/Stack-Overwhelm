@@ -59,6 +59,12 @@ user8 = User.create(
   password: "password"
 )
 
+user9 = User.create(
+  display_name: "Demo User",
+  email: "demo@user.com",
+  password: "password"
+)
+
 #Questions
 
 question0 = Question.create(

@@ -67,7 +67,7 @@ class Header extends React.Component {
 				<div className="navbar-items">
 					{menuButton}
 					<Link to="/" id="site-header-link">
-						<img id="logo" src="/images/logo.svg" />
+						<img id="logo" src="/images/logo.png" />
 					</Link>
 					<form id="search-bar-container" onSubmit={this.handleSubmit}>
 						<input id="search-bar" type="text" value={this.state.searchTerm} onChange={this.handleUpdate} placeholder="Search..."></input>
